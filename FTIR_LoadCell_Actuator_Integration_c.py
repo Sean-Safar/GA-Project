@@ -85,7 +85,7 @@ matrix_warp = np.array(matrix_warp)                                     #Must Co
 width_warp, height_warp = 585,384                                       #Can be any integer value (chose 384 because pixel size of actual undistorted Rectangle with lowest amount of distortion was 384)(keep aspect ratio by 384*1.523645=582)
 
 size_frame = (width_warp,height_warp)                                                                           #For writing to video file
-file_name_vid = "/media/flexiv-user/LINUXCNC 2_/Actuator Integration/GA_PullOff1_" + str(time.time()) + ".avi"  #Output Video Format/Location (look into lossless compression)
+file_name_vid = "/media/flexiv-user/LINUXCNC 2_/Actuator Integration/GA_PullOff_" + str(time.time()) + ".avi"  #Output Video Format/Location (look into lossless compression) (if recieve weird Opencv error, check folder path of saved video to ensure accuracy)
 fourcc = cv2.VideoWriter_fourcc(*'MJPG')                                                                        #Tried *'X264' as well, MJPG seems the best with loss compression
 final_result = cv2.VideoWriter(file_name_vid,fourcc,1,size_frame)                                               #Change to 3 for real time video (OV5647) (with new camera sensor keep at 1 or look into using 0 with lossless compression)
 
@@ -290,7 +290,7 @@ final_result.release()          #Release Video Writer (not essential)
 
 #**********Output Data to a CSV File**********#
 header = ('Force (N)','Area (mm2)','Pixel Intensity (0-255)')
-file_name_csv = "/media/flexiv-user/LINUXCNC 2_/Actuator Integration/Force_Area_PI1_" + str(time.time()) + ".csv"
+file_name_csv = "/media/flexiv-user/LINUXCNC 2_/Actuator Integration/Force_Area_PI_" + str(time.time()) + ".csv"
 #The Below Code was commented out but this method may need to be used if faster total pull-off actuation test time is desried
 #Deleting output[0:2][:] (zero values for actuator actuation to run properly)
 #del output[0:2]
